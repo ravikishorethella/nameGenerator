@@ -39,8 +39,19 @@ function loadNames(e) {
   // execute the function
   xhr.onload = function() {
     if (this.status === 200) {
-      //   const names = JSON.parse(this.responseText);
-      console.log(this.responseText);
+      const names = JSON.parse(this.responseText);
+      let output = `<h3>Generated names:</h3>`;
+      output += '<ul class="list">';
+
+      //   iterating over the names
+
+      names.forEach(name => {
+        output += `
+          <li>${name.name}</li>
+          `;
+      });
+      output += "</ul>";
+      document.getElementById("result").innerHTML = output;
     }
   };
 
